@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/Tiles.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://src/Player.tscn" type="PackedScene" id=2]
 
 [node name="Level" type="Spatial"]
 
@@ -13,5 +14,5 @@ __meta__ = {
 "_editor_clip_": 0
 }
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.855455, 0.517878, 0, -0.517878, 0.855455, 0, 10.8156, 18.0417 )
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 10.521, 4.14423, -10.586 )
