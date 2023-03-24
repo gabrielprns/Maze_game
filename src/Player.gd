@@ -1,7 +1,7 @@
 extends KinematicBody
 
-const GRAVITY = 0
-# const GRAVITY = -24.8
+
+const GRAVITY = -24.8
 var vel = Vector3()
 const MAX_SPEED = 20
 const JUMP_SPEED = 18
@@ -54,9 +54,9 @@ func process_input(delta):
 
 	# ----------------------------------
 	# Jumping
-	# if is_on_floor():
-	# 	if Input.is_action_just_pressed("movement_jump"):
-	# 		vel.y = JUMP_SPEED
+	if is_on_floor():
+		if Input.is_action_just_pressed("movement_jump"):
+			vel.y = JUMP_SPEED
 	# ----------------------------------
 
 	# ----------------------------------

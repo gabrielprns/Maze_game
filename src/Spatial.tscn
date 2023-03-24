@@ -1,38 +1,39 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.894118, 0.184314, 0.184314, 1 )
+albedo_color = Color( 0.298039, 0.0941176, 0.235294, 1 )
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="CubeMesh" id=9]
 material = SubResource( 1 )
 size = Vector3( 2, 6, 2 )
 
-[sub_resource type="ConvexPolygonShape" id=5]
-points = PoolVector3Array( -0.999863, -2.9375, -1, 1, 2.93749, 0.999998, -0.999863, 2.9375, 1, -0.999863, 2.9375, -1, -0.999863, -2.9375, 1, 1, -2.93749, -0.999998, 1, 2.93749, -0.999998, 1, -2.93749, 0.999998 )
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( -1, 3, 1, 1, 3, 1, -1, -3, 1, 1, 3, 1, 1, -3, 1, -1, -3, 1, 1, 3, -1, -1, 3, -1, 1, -3, -1, -1, 3, -1, -1, -3, -1, 1, -3, -1, 1, 3, 1, 1, 3, -1, 1, -3, 1, 1, 3, -1, 1, -3, -1, 1, -3, 1, -1, 3, -1, -1, 3, 1, -1, -3, -1, -1, 3, 1, -1, -3, 1, -1, -3, -1, 1, 3, 1, -1, 3, 1, 1, 3, -1, -1, 3, 1, -1, 3, -1, 1, 3, -1, -1, -3, 1, 1, -3, 1, -1, -3, -1, 1, -3, 1, 1, -3, -1, -1, -3, -1 )
 
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.0666667, 0.0862745, 0.160784, 1 )
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.380392, 0.380392, 0.380392, 1 )
 
-[sub_resource type="PlaneMesh" id=4]
-material = SubResource( 3 )
+[sub_resource type="CubeMesh" id=10]
+material = SubResource( 6 )
 
-[node name="Spatial" type="Spatial"]
+[sub_resource type="ConcavePolygonShape" id=8]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
 
-[node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.625, 3, 0 )
-mesh = SubResource( 2 )
+[node name="Node" type="Node"]
 
-[node name="StaticBody" type="StaticBody" parent="Wall"]
+[node name="wall" type="MeshInstance" parent="."]
+mesh = SubResource( 9 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Wall/StaticBody"]
-shape = SubResource( 5 )
+[node name="StaticBody" type="StaticBody" parent="wall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="wall/StaticBody"]
+shape = SubResource( 3 )
 
 [node name="floor" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82211, 0 )
-mesh = SubResource( 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22745, 0, 0 )
+mesh = SubResource( 10 )
 
-[node name="StaticBody2" type="StaticBody" parent="floor"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.625, 3, 0 )
+[node name="StaticBody" type="StaticBody" parent="floor"]
 
-[node name="CollisionShape" type="CollisionShape" parent="floor/StaticBody2"]
-shape = SubResource( 5 )
+[node name="CollisionShape" type="CollisionShape" parent="floor/StaticBody"]
+shape = SubResource( 8 )
