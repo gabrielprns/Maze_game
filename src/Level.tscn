@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/tileset.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/Door.tscn" type="PackedScene" id=3]
 
 [node name="Level" type="Spatial"]
 
@@ -19,5 +18,3 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 0.996072, 0.0885465, 0, -0.0885465, 0.996072, 2.36219, 5.44434, 0 )
-
-[node name="Door" parent="." instance=ExtResource( 3 )]
