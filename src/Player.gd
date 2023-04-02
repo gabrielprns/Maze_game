@@ -26,6 +26,8 @@ func _ready():
 func _physics_process(delta):
 	process_input(delta)
 	process_movement(delta)
+	
+
 
 func process_input(delta):
 
@@ -51,7 +53,7 @@ func process_input(delta):
 	dir += -cam_xform.basis.z * input_movement_vector.y
 	dir += cam_xform.basis.x * input_movement_vector.x
 	# ----------------------------------
-
+	
 	# ----------------------------------
 	# Jumping
 	if is_on_floor():
