@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SpatialMaterial" id=11]
 albedo_color = Color( 0.298039, 0.0941176, 0.235294, 1 )
 
 [sub_resource type="CubeMesh" id=9]
-material = SubResource( 1 )
+material = SubResource( 11 )
 size = Vector3( 2, 6, 2 )
 
 [sub_resource type="ConcavePolygonShape" id=3]
@@ -19,14 +19,14 @@ material = SubResource( 6 )
 [sub_resource type="ConcavePolygonShape" id=8]
 data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
 
-[node name="Node" type="Node"]
+[node name="Tiles" type="Node"]
 
-[node name="wall" type="MeshInstance" parent="."]
+[node name="Wall" type="MeshInstance" parent="."]
 mesh = SubResource( 9 )
 
-[node name="StaticBody" type="StaticBody" parent="wall"]
+[node name="StaticBody" type="StaticBody" parent="Wall"]
 
-[node name="CollisionShape" type="CollisionShape" parent="wall/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Wall/StaticBody"]
 shape = SubResource( 3 )
 
 [node name="floor" type="MeshInstance" parent="."]
