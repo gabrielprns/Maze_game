@@ -6,9 +6,6 @@
 [node name="Map" type="Spatial"]
 script = ExtResource( 2 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.881188, 0.472766, 0, -0.472766, 0.881188, 0, 27.826, 52.336 )
-
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 1 )
 data = {

@@ -1,22 +1,43 @@
 extends KinematicBody
 
-onready var nav: NavigationAgent = $NavigationAgent;
+const SPEED = 6.0
+const GRAVITY = -24.8
+var target = null
+var nav : Navigation = null
+var vel = Vector3()
 
-const SPEED: float = 5.0;
 
-func _physics_process(_delta: float) -> void:
-	if nav.is_navigation_finished():
+func _physics_process(delta):
+	if target == null:
 		return
-
-	var next_location = nav.get_next_location();
-	#var current_location = global_transform.origin;
-	var direction = global_transform.origin.direction_to(next_location);
-	var velocity = direction * nav.max_speed;
-
-	#var new_velocity = (next_location - current_location).normalized() * SPEED;
-	var _vel = move_and_slide(velocity, Vector3.UP);
-
-
-func set_target(target: Vector3) -> void:
-	print(target);
-	nav.set_target_location(target);
+	
+	
+	var path = get_path_to(target.global_transform.origin)
+	
+	if path.size() > 0:
+		move_along_path(path)
+		
+func get_path_to(target):
+	return nav.get_simple_path(global_transform.origin, target)
+	
+func move_along_path(path):
+	if path.size() <= 0:
+		return
+	
+	path.remove(0)
+	
+	var target = path[0]
+	
+	if global_transform.origin.distance_to(target)<0.1:
+		path.remove(0)
+		
+	vel = (target - translation).normalized() * SPEED
+	
+	vel = move_and_slide(vel)
+	
+func set_target(target):
+	self.target=target
+	
+func set_nav(nav):
+	self.nav=nav
+	
