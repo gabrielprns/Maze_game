@@ -1,6 +1,6 @@
 extends KinematicBody
 
-const SPEED = 6.0
+const SPEED = 4.5
 const GRAVITY = -24.8
 var target = null
 var nav : Navigation = null

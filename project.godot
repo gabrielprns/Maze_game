@@ -46,6 +46,12 @@ movement_jump={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="map"
+3d_physics/layer_2="player"
+3d_physics/layer_3="monster"
+
 [physics]
 
 common/enable_pause_aware_picking=true

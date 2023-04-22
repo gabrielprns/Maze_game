@@ -56,9 +56,9 @@ func process_input(delta):
 	
 	# ----------------------------------
 	# Jumping
-	if is_on_floor():
-		if Input.is_action_just_pressed("movement_jump"):
-			vel.y = JUMP_SPEED
+	#if is_on_floor():
+		#if Input.is_action_just_pressed("movement_jump"):
+			#vel.y = JUMP_SPEED
 	# ----------------------------------
 
 	# ----------------------------------
