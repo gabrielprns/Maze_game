@@ -7,6 +7,7 @@ const ROOM_SIZE: int = 5;
 
 var game_map: Array = [];
 var rooms: Array = [];
+var start_room = Vector3();
 
 onready var grid: GridMap = get_node("GridMap");
 
@@ -81,6 +82,9 @@ func generate_corridor(map: Array) -> void:
 
 
 func generate_map(map: Array) -> void:
+	var aux = int(ROOM_SIZE/2);
+	start_room = Vector3(rooms[0].x, 10, rooms[0].y);
+
 	for x in WIDTH:
 		for z in HEIGHT:
 			if map[x][z]:
