@@ -21,9 +21,9 @@ func _ready():
 	
 	for _i in range(ROOM_AMOUNT):
 		generate_rooms(game_map);
-		generate_corridor(game_map);
+	generate_corridor(game_map);
 
-		generate_map(game_map);
+	generate_map(game_map);
 
 
 func generate_rooms(map: Array) -> void:
