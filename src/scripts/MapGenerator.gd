@@ -84,8 +84,8 @@ func generate_corridor(map: Array) -> void:
 
 func generate_map(map: Array) -> void:
 	var aux = int(ROOM_SIZE/2);
-	start_room = Vector3(rooms[0].x-int(WIDTH/2), 4, rooms[0].y-int(HEIGHT/2));
-	end_room = Vector3(rooms[-1].x-int(WIDTH/2), 4, rooms[-1].y-int(HEIGHT/2));
+	start_room = Vector3(rooms[0].x-int(WIDTH/2)+2, 4, rooms[0].y-int(HEIGHT/2)+2);
+	end_room = Vector3(rooms[-1].x-int(WIDTH/2)+2, 4, rooms[-1].y-int(HEIGHT/2)+2);
 
 	for x in WIDTH:
 		for z in HEIGHT:
