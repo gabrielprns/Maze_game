@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/tileset.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://src/scripts/MapGenerator.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.164706, 0.184314, 0.219608, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
 
 [node name="Map" type="Spatial"]
 script = ExtResource( 2 )
@@ -16,3 +22,9 @@ __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 0, 0 )
 }
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial"]
+transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 7, 0 )
+mesh = SubResource( 2 )
