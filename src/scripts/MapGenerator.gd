@@ -9,6 +9,7 @@ var game_map: Array = [];
 var rooms: Array = [];
 var start_room = Vector3();
 var end_room = Vector3();
+signal generated;
 
 onready var grid: GridMap = get_node("GridMap");
 
@@ -25,6 +26,7 @@ func _ready():
 	generate_corridor(game_map);
 
 	generate_map(game_map);
+	emit_signal("generated");
 
 
 func generate_rooms(map: Array) -> void:
