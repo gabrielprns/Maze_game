@@ -21,8 +21,14 @@ func _ready():
 		for y in HEIGHT:
 			game_map[x].append(true);
 	
-	for _i in range(ROOM_AMOUNT):
+	for x in range(ROOM_SIZE):
+		for y in range(ROOM_SIZE):
+			rooms.append(Vector2(x+2, y+2));
+			game_map[x+2][y+2] = false;
+
+	for _i in range(ROOM_SIZE):
 		generate_rooms(game_map);
+		
 	generate_corridor(game_map);
 
 	generate_map(game_map);
@@ -48,7 +54,7 @@ func generate_rooms(map: Array) -> void:
 
 
 func generate_corridor(map: Array) -> void:
-	for corridor_amount in range(ROOM_AMOUNT-1):
+	for corridor_amount in range(ROOM_AMOUNT):
 		var coin = randi() > 0.5;
 		var aux = int(ROOM_SIZE/2);
 
@@ -85,9 +91,10 @@ func generate_corridor(map: Array) -> void:
 
 
 func generate_map(map: Array) -> void:
+	
 	var aux = int(ROOM_SIZE/2);
-	start_room = Vector3(rooms[0].x-int(WIDTH/2)+2, 4, rooms[0].y-int(HEIGHT/2)+2);
-	end_room = Vector3(rooms[-1].x-int(WIDTH/2)+2, 4, rooms[-1].y-int(HEIGHT/2)+2);
+	start_room = Vector3(rooms[0].x-int(WIDTH/2)+aux, 5, rooms[0].y-int(HEIGHT/2)+aux);
+	end_room = Vector3(rooms[-1].x-int(WIDTH/2)+aux, 5, rooms[-1].y-int(HEIGHT/2)+aux);
 
 	for x in WIDTH:
 		for z in HEIGHT:
