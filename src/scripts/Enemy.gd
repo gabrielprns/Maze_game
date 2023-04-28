@@ -14,5 +14,6 @@ func _physics_process(delta):
 func set_target(target: Vector3) -> void:
 	agent.set_target_location(target);
 
-func set_position(pos: Vector3) -> void:
-	global_transform.origin = pos;
+
+func set_pos(pos: Vector3) -> void:
+	transform.origin = pos;

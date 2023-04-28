@@ -6,6 +6,7 @@
 [sub_resource type="Environment" id=6]
 background_mode = 1
 background_color = Color( 0.0666667, 0.0901961, 0.141176, 1 )
+ambient_light_color = Color( 0.027451, 0.0588235, 0.0666667, 1 )
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.164706, 0.184314, 0.219608, 1 )
@@ -31,5 +32,3 @@ mesh = SubResource( 4 )
 navmesh = SubResource( 5 )
 
 [node name="Map" parent="NavigationMeshInstance" instance=ExtResource( 1 )]
-
-[connection signal="generated" from="NavigationMeshInstance/Map" to="." method="_on_Map_generated"]
