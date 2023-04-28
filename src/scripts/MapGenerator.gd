@@ -9,7 +9,6 @@ var game_map: Array = [];
 var rooms: Array = [];
 var start_room = Vector3();
 var end_room = Vector3();
-signal generated;
 
 onready var grid: GridMap = get_node("GridMap");
 
@@ -20,11 +19,6 @@ func _ready():
 		game_map.append([]);
 		for y in HEIGHT:
 			game_map[x].append(true);
-	
-	for x in range(ROOM_SIZE):
-		for y in range(ROOM_SIZE):
-			rooms.append(Vector2(x+2, y+2));
-			game_map[x+2][y+2] = false;
 
 	for _i in range(ROOM_SIZE):
 		generate_rooms(game_map);
@@ -32,7 +26,6 @@ func _ready():
 	generate_corridor(game_map);
 
 	generate_map(game_map);
-	emit_signal("generated");
 
 
 func generate_rooms(map: Array) -> void:
@@ -54,8 +47,7 @@ func generate_rooms(map: Array) -> void:
 
 
 func generate_corridor(map: Array) -> void:
-	for corridor_amount in range(ROOM_AMOUNT):
-		var coin = randi() > 0.5;
+	for corridor_amount in range(ROOM_AMOUNT-1):
 		var aux = int(ROOM_SIZE/2);
 
 		var p1_x = rooms[ROOM_SIZE*ROOM_SIZE * corridor_amount].x+aux;
@@ -93,11 +85,13 @@ func generate_corridor(map: Array) -> void:
 func generate_map(map: Array) -> void:
 	
 	var aux = int(ROOM_SIZE/2);
-	start_room = Vector3(rooms[0].x-int(WIDTH/2)+aux, 5, rooms[0].y-int(HEIGHT/2)+aux);
-	end_room = Vector3(rooms[-1].x-int(WIDTH/2)+aux, 5, rooms[-1].y-int(HEIGHT/2)+aux);
+	start_room = Vector3(rooms[0].x-int(WIDTH/2)+aux, 2, rooms[0].y-int(HEIGHT/2)+aux);
+	end_room = Vector3(rooms[-1].x-int(WIDTH/2)+aux, 2, rooms[-1].y-int(HEIGHT/2)+aux);
 
 	for x in WIDTH:
 		for z in HEIGHT:
 			if map[x][z]:
 				grid.set_cell_item(x-int(WIDTH/2), 0, z-int(HEIGHT/2), 0);
-				#yield(get_tree().create_timer(0.005), "timeout");
+			elif Vector2(x,z) in rooms and Vector2(x-aux, z-aux) in rooms and Vector2(x+aux, z+aux) in rooms:
+#			elif Vector2(x,z) in rooms:
+				grid.set_cell_item(x-int(WIDTH/2), 3.75, z-int(HEIGHT/2), 2);
