@@ -1,6 +1,6 @@
 extends KinematicBody
 
-const SPEED = 10.0;
+const SPEED = 5.0;
 
 onready var agent = $NavigationAgent;
 
@@ -13,3 +13,6 @@ func _physics_process(delta):
 
 func set_target(target: Vector3) -> void:
 	agent.set_target_location(target);
+
+func set_position(pos: Vector3) -> void:
+	global_transform.origin = pos;
