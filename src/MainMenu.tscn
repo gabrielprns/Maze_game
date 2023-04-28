@@ -1,0 +1,145 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://src/Level.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ExoBoldItalic-VdrB.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/Mirage-ZEzz.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/MenuBack-1366x768.jpg" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.12549, 0.235294, 0.403922, 0.588235 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.12549, 0.235294, 0.403922, 0.784314 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.12549, 0.235294, 0.403922, 0.392157 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Menu" type="Control"]
+script = ExtResource( 1 )
+mainGameScene = ExtResource( 2 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1366.0
+margin_bottom = 768.0
+texture = ExtResource( 5 )
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1366.0
+margin_bottom = 768.0
+custom_constants/margin_right = 100
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 100.0
+margin_right = 1266.0
+margin_bottom = 718.0
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 1166.0
+margin_bottom = 357.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 1 )
+text = "Deep maze"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 361.0
+margin_right = 1166.0
+margin_bottom = 718.0
+rect_pivot_offset = Vector2( -387, -205 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_right = 1166.0
+margin_bottom = 85.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 300
+custom_constants/margin_left = 300
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+margin_left = 300.0
+margin_right = 866.0
+margin_bottom = 85.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 3 )
+text = "Jogar"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 135.0
+margin_right = 1166.0
+margin_bottom = 221.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 300
+custom_constants/margin_left = 300
+
+[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3"]
+margin_left = 300.0
+margin_right = 866.0
+margin_bottom = 86.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 3 )
+text = "Créditos"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 271.0
+margin_right = 1166.0
+margin_bottom = 357.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 300
+custom_constants/margin_left = 300
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2"]
+margin_left = 300.0
+margin_right = 866.0
+margin_bottom = 86.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 3 )
+text = "Sair"
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/PlayButton" to="." method="_on_PlayButton_button_up"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/ExitButton" to="." method="_on_ExitButton_button_up"]

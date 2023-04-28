@@ -16,8 +16,7 @@ func _ready():
 	enemy = Enemy.instance();
 	
 	player.set_pos(map.start_room);
-	enemy.set_pos(map.start_room);
-	print(map.start_room);
+	enemy.set_pos(map.end_room);
 	
 	add_child(player);
 	add_child(enemy);
@@ -25,5 +24,4 @@ func _ready():
 
 func _physics_process(delta):
 	var loc = player.global_transform.origin;
-	print(player.global_transform.origin);
 	enemy.call_deferred("set_target", loc);
