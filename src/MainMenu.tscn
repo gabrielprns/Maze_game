@@ -1,10 +1,29 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/Level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/ExoBoldItalic-VdrB.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/Mirage-ZEzz.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/MenuBack-1366x768.jpg" type="Texture" id=5]
+
+[sub_resource type="ShaderMaterial" id=7]
+
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+
+uniform float blur: hint_range(0.0, 2.5);
+uniform float brightness: hint_range(0.0, 1.0);
+
+void fragment() {
+	COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur);
+	COLOR.rgb *= brightness;
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+render_priority = 2
+shader = SubResource( 8 )
+shader_param/blur = 1.713
+shader_param/brightness = 0.7
 
 [sub_resource type="DynamicFont" id=1]
 size = 120
@@ -40,10 +59,17 @@ script = ExtResource( 1 )
 mainGameScene = ExtResource( 2 )
 
 [node name="Background" type="TextureRect" parent="."]
+material = SubResource( 7 )
 margin_right = 1366.0
 margin_bottom = 768.0
 texture = ExtResource( 5 )
 stretch_mode = 1
+
+[node name="BlurEffect" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 9 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 1366.0

@@ -23,10 +23,13 @@ func _ready():
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _physics_process(delta):
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_pressed("ui_cancel"):
+		$PauseMenu.pause();
+
+func _physics_process(delta) -> void:
 	process_input(delta)
 	process_movement(delta)
-	
 
 
 func process_input(delta):
