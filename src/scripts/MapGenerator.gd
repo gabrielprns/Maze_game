@@ -40,7 +40,7 @@ func generate_rooms(map: Array) -> void:
 	rooms.has(Vector2(x_pos + aux, y_pos + aux)):
 		generate_rooms(map);
 	else:
-		for x in range(x_pos-aux, x_pos+aux+1):
+		for x in range(x_pos-aux, x_pos+aux+2):
 			for y in range(y_pos-aux, y_pos+aux+1):
 				rooms.append(Vector2(x, y));
 				map[x][y] = false;
