@@ -1,8 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/ExoBoldItalic-VdrB.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/scripts/Hud.gd" type="Script" id=2]
+[ext_resource path="res://assets/Mirage-ZEzz.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="QuadMesh" id=1]
+[sub_resource type="DynamicFont" id=5]
+size = 300
+font_data = ExtResource( 3 )
+
+[sub_resource type="TextMesh" id=6]
+text = "O"
+font = SubResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 200
@@ -17,15 +25,17 @@ text = "0"
 font = SubResource( 2 )
 
 [node name="Hud" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="Pointer" type="MeshInstance2D" parent="."]
 modulate = Color( 1, 1, 1, 0.470588 )
 position = Vector2( 683, 384 )
 scale = Vector2( 5, 5 )
-mesh = SubResource( 1 )
+mesh = SubResource( 6 )
 
 [node name="ItemCount" type="MeshInstance2D" parent="."]
 modulate = Color( 1, 1, 1, 0.505882 )
-position = Vector2( 52, 45 )
-scale = Vector2( 30, 30 )
+position = Vector2( 46, 73 )
+rotation = 3.14159
+scale = Vector2( -30, 30 )
 mesh = SubResource( 3 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/circuit_collect_track.mp3-9e712d06c6a015c5aaa2d1aa29396378.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/circuit_collect_track.mp3"
+dest_files=[ "res://.import/circuit_collect_track.mp3-9e712d06c6a015c5aaa2d1aa29396378.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

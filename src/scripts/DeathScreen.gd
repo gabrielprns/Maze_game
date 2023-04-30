@@ -11,8 +11,8 @@ func restart() -> void:
 	animator.play("hide");
 	get_tree().paused = false;
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
-	get_tree().reload_current_scene();
-	
+	var _result = get_tree().reload_current_scene();
+
 func _on_TryAgainButton_button_up() -> void:
 	restart();
 

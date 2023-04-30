@@ -5,7 +5,9 @@
 
 [sub_resource type="Environment" id=6]
 background_mode = 1
-background_energy = 0.0
+fog_enabled = true
+fog_color = Color( 0.215686, 0.25098, 0.298039, 1 )
+fog_sun_color = Color( 0.623529, 0.556863, 0.427451, 1 )
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.164706, 0.184314, 0.219608, 1 )
@@ -24,7 +26,7 @@ environment = SubResource( 6 )
 [node name="Teto" type="Spatial" parent="."]
 
 [node name="MeshInstance" type="MeshInstance" parent="Teto"]
-transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 6, 0 )
+transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 7, 0 )
 mesh = SubResource( 4 )
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]

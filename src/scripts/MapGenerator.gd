@@ -91,4 +91,5 @@ func generate_map(map: Array) -> void:
 	for x in WIDTH:
 		for z in HEIGHT:
 			if map[x][z]:
+				pass
 				grid.set_cell_item(x-int(WIDTH/2), 0, z-int(HEIGHT/2), 0);
