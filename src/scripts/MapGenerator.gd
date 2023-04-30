@@ -92,6 +92,3 @@ func generate_map(map: Array) -> void:
 		for z in HEIGHT:
 			if map[x][z]:
 				grid.set_cell_item(x-int(WIDTH/2), 0, z-int(HEIGHT/2), 0);
-			elif Vector2(x,z) in rooms and Vector2(x-aux, z-aux) in rooms and Vector2(x+aux, z+aux) in rooms:
-#			elif Vector2(x,z) in rooms:
-				grid.set_cell_item(x-int(WIDTH/2), 3.75, z-int(HEIGHT/2), 2);

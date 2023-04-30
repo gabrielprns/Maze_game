@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/ExoBoldItalic-VdrB.otf" type="DynamicFontData" id=1]
+
+[sub_resource type="QuadMesh" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 200
+font_data = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.607843, 0.870588, 1, 0.529412 )
+
+[sub_resource type="TextMesh" id=3]
+material = SubResource( 4 )
+text = "0"
+font = SubResource( 2 )
+
+[node name="Hud" type="Node2D"]
+
+[node name="Pointer" type="MeshInstance2D" parent="."]
+modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( 683, 384 )
+scale = Vector2( 5, 5 )
+mesh = SubResource( 1 )
+
+[node name="ItemCount" type="MeshInstance2D" parent="."]
+modulate = Color( 1, 1, 1, 0.505882 )
+position = Vector2( 52, 45 )
+scale = Vector2( 30, 30 )
+mesh = SubResource( 3 )
