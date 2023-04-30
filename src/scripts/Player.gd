@@ -6,7 +6,7 @@ const MAX_SPEED = 10
 const JUMP_SPEED = 18
 const ACCEL = 4.5
 
-var itens = 0;
+var itens;
 
 var dir = Vector3()
 
@@ -20,15 +20,21 @@ var MOUSE_SENSITIVITY = 0.05
 
 
 func _ready():
-	camera = $CameraPivot/Camera
-	rotation_helper = $CameraPivot
+	$WinScreen.hide();
+	$DeathScreen.animator.play("hide");
+	camera = $CameraPivot/Camera;
+	rotation_helper = $CameraPivot;
 
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	itens = 0;
+	$Hud.change_item_count(itens);
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("ui_cancel"):
 		$DeathScreen.hide();
+		$Hud.hide();
 		$PauseMenu.pause();
 
 
@@ -103,16 +109,23 @@ func _input(event):
 
 func _on_DeathScreen_restart():
 	$DeathScreen.restart();
-	#get_tree().reload_current_scene();
 
 
 func set_pos(pos: Vector3) -> void:
 	transform.origin = pos;
 
 
+func win() -> void:
+	$Hud.hide();
+	$WinScreen.win_screen();
+
 func _on_EnvironmentColision_area_entered(area):
 	if area.name == "enemy_colision":
 		$DeathScreen.show();
+		$Hud.hide();
 		$DeathScreen.gameOver();
-	elif area.name == "collect_area":
+	elif "collect_area" in area.name:
 		itens += 1;
+		$Hud.change_item_count(itens);
+		$CollectSound.play();
+		area.get_parent().free();
