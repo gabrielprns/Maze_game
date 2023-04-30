@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/hunt_track.mp3-7d1a31a3bc9783fd907379533ef003b2.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/hunt_track.mp3"
+dest_files=[ "res://.import/hunt_track.mp3-7d1a31a3bc9783fd907379533ef003b2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
