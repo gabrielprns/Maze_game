@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/hover_tracktrack.mp3-def326fc2b5cf42c0a58c2708c150d2e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/hover_tracktrack.mp3"
+dest_files=[ "res://.import/hover_tracktrack.mp3-def326fc2b5cf42c0a58c2708c150d2e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

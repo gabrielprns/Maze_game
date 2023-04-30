@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/enemy_breating.mp3" type="AudioStream" id=2]
@@ -9,6 +9,8 @@ radius = 0.6
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.6
 
+[sub_resource type="CapsuleShape" id=3]
+
 [node name="Enemy" type="KinematicBody"]
 script = ExtResource( 1 )
 
@@ -18,10 +20,17 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 1 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="ColisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 2 )
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )
+unit_size = 3.0
 autoplay = true
+
+[node name="enemy_colision" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="enemy_colision"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 3 )

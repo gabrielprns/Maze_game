@@ -4,8 +4,16 @@ export var mainGameScene: PackedScene;
 
 
 func _on_PlayButton_button_up():
-	get_tree().change_scene(mainGameScene.resource_path);
+	var _result = get_tree().change_scene_to(mainGameScene);
 
 
 func _on_ExitButton_button_up():
 	get_tree().quit();
+
+
+func _on_Button_hover():
+	$HoverSound.play();
+
+
+func _on_Button_click():
+	$ClickSound.play();

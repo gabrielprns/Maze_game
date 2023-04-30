@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/Level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/ExoBoldItalic-VdrB.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/Mirage-ZEzz.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/MenuBack-1366x768.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/audio/menu_track.mp3" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/click_track.mp3" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/hover_tracktrack.mp3" type="AudioStream" id=8]
 
 [sub_resource type="ShaderMaterial" id=7]
 
@@ -66,7 +69,6 @@ texture = ExtResource( 5 )
 stretch_mode = 1
 
 [node name="BlurEffect" type="ColorRect" parent="."]
-visible = false
 material = SubResource( 9 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -167,5 +169,27 @@ custom_styles/pressed = SubResource( 5 )
 custom_styles/normal = SubResource( 3 )
 text = "Sair"
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="BackgroundSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -20.458
+autoplay = true
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/PlayButton" to="." method="_on_Button_click"]
 [connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/PlayButton" to="." method="_on_PlayButton_button_up"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/PlayButton" to="." method="_on_Button_hover"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/CreditsButton" to="." method="_on_Button_click"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/CreditsButton" to="." method="_on_Button_hover"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/ExitButton" to="." method="_on_Button_click"]
 [connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/ExitButton" to="." method="_on_ExitButton_button_up"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/ExitButton" to="." method="_on_Button_hover"]

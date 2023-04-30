@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/impact_track.mp3-beba39260b3f2fd66e8721e450ddf489.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/impact_track.mp3"
+dest_files=[ "res://.import/impact_track.mp3-beba39260b3f2fd66e8721e450ddf489.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -2,20 +2,33 @@ extends ColorRect
 
 onready var animator: AnimationPlayer = $AnimationPlayer;
 
-func unpause():
+func unpause() -> void:
 	animator.play("Unpause");
 	get_tree().paused = false;
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 
 
-func pause():
+func pause() -> void:
 	animator.play("Pause");
 	get_tree().paused = true;
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 
-func _on_QuitButton_button_up():
+
+func _on_ResumeButton_button_up() -> void:
+	unpause();
+
+
+func _on_BackToMenuButton_button_up():
+	var _result = get_tree().change_scene("res://src/MainMenu.tscn");
+
+
+func _on_QuitPauseButton_button_up():
 	get_tree().quit();
 
 
-func _on_ResumeButton_button_up():
-	unpause();
+func _on_Button_hover():
+	$HoverSound.play();
+
+
+func _on_Button_click():
+	$ClickSound.play();
