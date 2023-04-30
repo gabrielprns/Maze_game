@@ -6,7 +6,8 @@ const MAX_SPEED = 10
 const JUMP_SPEED = 18
 const ACCEL = 4.5
 
-var itens;
+var itens: int;
+var hunt: bool;
 
 var dir = Vector3()
 
@@ -25,6 +26,7 @@ func _ready():
 	camera = $CameraPivot/Camera;
 	rotation_helper = $CameraPivot;
 
+	hunt = false;
 	itens = 0;
 	$Hud.change_item_count(itens);
 	
@@ -97,6 +99,7 @@ func process_movement(delta):
 	vel.z = hvel.z
 	vel = move_and_slide(vel, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 
+
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotation_helper.rotate_x(deg2rad(event.relative.y * MOUSE_SENSITIVITY * -1))
@@ -119,6 +122,7 @@ func win() -> void:
 	$Hud.hide();
 	$WinScreen.win_screen();
 
+
 func _on_EnvironmentColision_area_entered(area):
 	if area.name == "enemy_colision":
 		$DeathScreen.show();
@@ -133,4 +137,9 @@ func _on_EnvironmentColision_area_entered(area):
 
 func _on_HuntArea_area_entered(area):
 	if area.name == "enemy_colision":
-		$ImpactSound.play();
+		if !hunt:
+			$ImpactSound.play();
+			$HuntTrack.play();
+			$EnvironmentSound.stop();
+			
+		hunt = true;

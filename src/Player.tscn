@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/player_breathing.mp3" type="AudioStream" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://src/WinScreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/audio/circuit_collect_track.mp3" type="AudioStream" id=7]
 [ext_resource path="res://assets/audio/impact_track.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/ambient_track.mp3" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/hunt_track.mp3" type="AudioStream" id=10]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
@@ -69,6 +71,14 @@ shape = SubResource( 3 )
 
 [node name="ImpactSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
+[node name="EnvironmentSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -20.0
+autoplay = true
+
+[node name="HuntTrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 
 [connection signal="area_entered" from="EnvironmentColision" to="." method="_on_EnvironmentColision_area_entered"]
 [connection signal="area_entered" from="HuntArea" to="." method="_on_HuntArea_area_entered"]

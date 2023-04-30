@@ -11,6 +11,9 @@ func _physics_process(_delta) -> void:
 	var velocity = (next_location - current_location).normalized() * SPEED;
 	if hunt:
 		var _result = move_and_slide(velocity);
+		$HuntSound.play();
+		$IdleSound.stop();
+		
 
 
 func set_target(target: Vector3) -> void:
