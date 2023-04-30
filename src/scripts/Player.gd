@@ -129,3 +129,8 @@ func _on_EnvironmentColision_area_entered(area):
 		$Hud.change_item_count(itens);
 		$CollectSound.play();
 		area.get_parent().free();
+
+
+func _on_HuntArea_area_entered(area):
+	if area.name == "enemy_colision":
+		$ImpactSound.play();

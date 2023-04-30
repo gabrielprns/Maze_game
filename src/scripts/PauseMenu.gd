@@ -16,6 +16,7 @@ func pause() -> void:
 
 func _on_ResumeButton_button_up() -> void:
 	unpause();
+	get_parent().get_child(7).show();
 
 
 func _on_BackToMenuButton_button_up():
