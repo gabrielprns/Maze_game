@@ -6,6 +6,8 @@ const MAX_SPEED = 10
 const JUMP_SPEED = 18
 const ACCEL = 4.5
 
+var itens = 0;
+
 var dir = Vector3()
 
 const DEACCEL= 16
@@ -108,7 +110,9 @@ func set_pos(pos: Vector3) -> void:
 	transform.origin = pos;
 
 
-func _on_EnemyColision_area_entered(area):
+func _on_EnvironmentColision_area_entered(area):
 	if area.name == "enemy_colision":
 		$DeathScreen.show();
 		$DeathScreen.gameOver();
+	elif area.name == "collect_area":
+		itens += 1;
