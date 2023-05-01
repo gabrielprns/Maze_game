@@ -1,4 +1,4 @@
-# Deeep Maze
+# Deep Maze
 
 - Para acessar o jogo basta baixar o aplicativo da godot. 
 
