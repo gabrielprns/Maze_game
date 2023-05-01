@@ -1,6 +1,6 @@
 extends KinematicBody
 
-const SPEED = 4.0;
+var SPEED = 4.0;
 var hunt = false;
 
 onready var agent = $NavigationAgent;
@@ -13,7 +13,6 @@ func _physics_process(_delta) -> void:
 		var _result = move_and_slide(velocity);
 		$HuntSound.play();
 		$IdleSound.stop();
-		
 
 
 func set_target(target: Vector3) -> void:

@@ -11,29 +11,42 @@ var player: KinematicBody;
 var enemy: KinematicBody;
 
 func _ready():
-
+	randomize();
+	
 	var room_ammount = map.ROOM_AMOUNT;
 	var room_size = map.ROOM_SIZE;
 	var rooms = map.rooms;
 
+	var vertices = $NavigationMeshInstance/Map/GridMap.get_used_cells_by_item(1);
+
+	var player_point = rand_range(0, len(vertices));
+	var enemy_point = rand_range(0, len(vertices));
+	
+	var player_start_point = vertices[player_point];
+	var enemy_start_point = vertices[enemy_point];
+	
+	player_start_point.y = 2;
+	enemy_start_point.y = 2;
+
 	for i in room_ammount:
-		var box_pos = Vector3(rooms[i+ i*room_size*room_size].x-int(map.WIDTH/2), 0.25, rooms[i+ i*room_size*room_size].y-int(map.HEIGHT/2));
+		var pos = rand_range(0, len(vertices));
+		var box_pos = vertices[pos];
+		box_pos.y = 0.25;
 		var box = Box.instance();
 		box.get_child(0).name = "collect_area" + str(i);
 		box.transform.origin = box_pos;
 		add_child(box);
 
-	navmesh.bake_navigation_mesh(false);
 
 	player = Player.instance();
 	enemy = Enemy.instance();
 
-	player.set_pos(map.start_room);
-	enemy.set_pos(map.end_room);
+	player.set_pos(player_start_point);
+	enemy.set_pos(enemy_start_point);
 
-	add_child(player);
-	add_child(enemy);
-
+	navmesh.add_child(player);
+	navmesh.add_child(enemy);
+	navmesh.bake_navigation_mesh(false);
 
 
 func _physics_process(_delta):

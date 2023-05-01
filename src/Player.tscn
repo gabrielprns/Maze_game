@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/player_breathing.mp3" type="AudioStream" id=2]
@@ -18,10 +18,46 @@ radius = 0.7
 
 [sub_resource type="BoxShape" id=3]
 
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fader:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "fade"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fader:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
 [node name="Player" type="KinematicBody"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 1 )
+
+[node name="Fader" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
@@ -79,6 +115,11 @@ autoplay = true
 
 [node name="HuntTrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+volume_db = -5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/fade = SubResource( 5 )
 
 [connection signal="area_entered" from="EnvironmentColision" to="." method="_on_EnvironmentColision_area_entered"]
 [connection signal="area_entered" from="HuntArea" to="." method="_on_HuntArea_area_entered"]

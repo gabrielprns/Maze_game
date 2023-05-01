@@ -21,6 +21,8 @@ var MOUSE_SENSITIVITY = 0.05
 
 
 func _ready():
+	$AnimationPlayer.play("fade");
+	
 	$WinScreen.hide();
 	$DeathScreen.animator.play("hide");
 	camera = $CameraPivot/Camera;

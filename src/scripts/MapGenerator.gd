@@ -40,7 +40,7 @@ func generate_rooms(map: Array) -> void:
 	rooms.has(Vector2(x_pos + aux, y_pos + aux)):
 		generate_rooms(map);
 	else:
-		for x in range(x_pos-aux, x_pos+aux+2):
+		for x in range(x_pos-aux, x_pos+aux+1):
 			for y in range(y_pos-aux, y_pos+aux+1):
 				rooms.append(Vector2(x, y));
 				map[x][y] = false;
@@ -74,10 +74,10 @@ func generate_corridor(map: Array) -> void:
 		var h_length: int = abs(point1.x - point.x);
 		var v_length: int =  abs(point1.y - point.y);
 
-		for corridor_block in range(h_length):
+		for corridor_block in range(h_length+1):
 			if point.x+corridor_block < WIDTH:
 				map[point.x+corridor_block][point.y+(v_length*displace.x)] = false;
-		for corridor_block in range(v_length):
+		for corridor_block in range(v_length+1):
 			if point.y+corridor_block < HEIGHT:
 				map[point.x+(h_length*displace.y)][point.y+corridor_block] = false;
 
